@@ -1,0 +1,35 @@
+schema: spec-driven
+
+# Project context (optional)
+context: |
+  Portal de pedidos online de My Bakery (panadería artesanal, Barcelona, EST 2020).
+  Cliente recoge en tienda. Pago al recoger en el MVP.
+  Stack: Next.js 15 (App Router) + TypeScript strict + Tailwind 4 + Supabase + pnpm.
+  Marca: solo tokens de brand/tokens.json (Playfair Display + Manrope, paleta ink/paper/wheat).
+  Invariantes: RLS en todas las tablas, precio recalculado en servidor, service_role solo en servidor, pedidos idempotentes, rate limit en checkout/login.
+  Idioma de los artifacts: español.
+
+# Per-artifact rules (optional)
+rules:
+  proposal:
+    - Siempre indicar qué está fuera de alcance.
+    - Criterios de éxito medibles, no "rápido" ni "intuitivo".
+  specs:
+    - Acceptance criteria en formato Given/When/Then.
+    - Incluir alérgenos y stock diario si toca productos.
+  design:
+    - Modelo de datos y decisiones con trade-offs.
+    - Riesgos y plan de rollback para cambios de datos o auth.
+  tasks:
+    - Tareas de máximo 2 horas.
+    - Marcar dependencias entre tareas.
+    - Incluir tareas de security review y code review al final.
+
+# Per-operation guidance (optional)
+operations:
+  apply:
+    guidance:
+      - Ejecutar tests unitarios y E2E antes de marcar tarea completa.
+  archive:
+    guidance:
+      - Resumir el resultado del archive antes de terminar.

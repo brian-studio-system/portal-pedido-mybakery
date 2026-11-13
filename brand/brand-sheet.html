@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Bakery — Hoja de marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14110F; --paper:#F7F1E6; --surface:#FFFCF6;
+    --crust:#7A4A22; --wheat:#C9932F; --wheat-deep:#8A6220;
+    --terracotta:#9C4A32; --olive:#5F6B4A; --muted:#6B6259;
+    --border:rgba(20,17,15,.14);
+    --display:"Playfair Display",Georgia,serif;
+    --body:"Manrope",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--body); font-size:16px; line-height:1.6;
+    background-image:radial-gradient(rgba(20,17,15,.035) 1px, transparent 1px);
+    background-size:4px 4px;
+  }
+  .sheet{max-width:1120px; margin:0 auto; padding:72px 40px 96px}
+  section{padding:56px 0; border-top:1px solid var(--border)}
+  section:first-of-type{border-top:0; padding-top:0}
+  .eyebrow{
+    font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--wheat-deep); margin:0 0 16px;
+  }
+  h1,h2,h3{font-family:var(--display); font-weight:700; margin:0; letter-spacing:-.01em}
+  h1{font-size:clamp(44px,7vw,76px); line-height:1.02; letter-spacing:-.025em}
+  h2{font-size:clamp(28px,3.4vw,40px); line-height:1.1; margin-bottom:24px}
+  h3{font-size:22px; line-height:1.25; font-weight:600}
+  p{margin:0 0 16px; max-width:68ch}
+  .lead{font-size:19px; color:var(--muted); max-width:60ch}
+  .mono{font-variant-numeric:tabular-nums}
+  .muted{color:var(--muted)}
+  .small{font-size:14px}
+
+  /* HERO */
+  .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center}
+  .hero-logo{
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:8%; display:grid; place-items:center;
+  }
+  .hero-logo img{width:100%; height:auto; display:block; mix-blend-mode:multiply}
+  .hero p{margin-top:20px}
+  .tagline{font-family:var(--display); font-style:italic; font-size:22px; color:var(--crust); margin-top:24px}
+
+  /* GRID */
+  .grid{display:grid; gap:24px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+
+  /* PALETTE */
+  .swatch{border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--surface)}
+  .chip{height:104px}
+  .swatch .meta{padding:14px 16px}
+  .swatch .name{font-weight:600; font-size:14px}
+  .swatch .hex{font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
+  .swatch .role{font-size:12px; color:var(--muted); margin-top:4px}
+
+  /* TYPE */
+  .spec{padding:20px 0; border-bottom:1px solid var(--border); display:flex; gap:24px; align-items:baseline; flex-wrap:wrap}
+  .spec:last-child{border-bottom:0}
+  .spec .meta{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); min-width:120px}
+  .spec .sample{flex:1; min-width:260px}
+  .t-xl{font-family:var(--display); font-size:56px; line-height:1.05; font-weight:700; letter-spacing:-.02em}
+  .t-l{font-family:var(--display); font-size:40px; line-height:1.1; font-weight:700}
+  .t-m{font-family:var(--display); font-size:30px; line-height:1.15; font-weight:600}
+  .t-h{font-size:22px; line-height:1.3; font-weight:600}
+  .t-b{font-size:16px; line-height:1.6}
+  .t-lb{font-size:12px; line-height:1.4; font-weight:600; letter-spacing:.08em; text-transform:uppercase}
+
+  /* COMPONENTS */
+  .panel{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px}
+  .stack{display:flex; flex-direction:column; gap:12px; align-items:flex-start}
+  .row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+  .btn{
+    font-family:var(--body); font-weight:600; font-size:16px; height:48px; padding:0 24px;
+    border-radius:999px; border:1px solid var(--ink); cursor:pointer;
+    transition:transform .2s ease-out, background .2s ease-out;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--ink); color:var(--paper)}
+  .btn-secondary{background:transparent; color:var(--ink)}
+  .btn-ghost{background:transparent; border-color:transparent; color:var(--crust); text-decoration:underline; text-underline-offset:3px; padding:0 4px}
+  .field{display:flex; flex-direction:column; gap:8px; width:100%}
+  .field label{font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase}
+  .field input{
+    height:48px; border:1px solid var(--border); border-radius:12px; background:var(--surface);
+    padding:0 16px; font-family:var(--body); font-size:16px; color:var(--ink); outline:none;
+  }
+  .field input:focus{border-color:var(--crust); box-shadow:0 0 0 3px rgba(201,147,47,.2)}
+  .badge{
+    display:inline-block; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    padding:4px 10px; border-radius:999px; background:rgba(201,147,47,.16);
+  }
+  .badge.ok{background:rgba(95,107,74,.16); color:var(--olive)}
+  .badge.out{background:rgba(156,74,50,.16); color:var(--terracotta)}
+  .stepper{display:inline-flex; align-items:center; border:1px solid var(--border); border-radius:999px; background:var(--surface)}
+  .stepper button{width:44px; height:44px; border:0; background:transparent; font-size:18px; cursor:pointer; color:var(--ink)}
+  .stepper span{min-width:32px; text-align:center; font-weight:600; font-variant-numeric:tabular-nums}
+  .card{background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:transform .2s ease-out, box-shadow .2s ease-out}
+  .card:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,17,15,.08)}
+  .card .thumb{aspect-ratio:4/3; background:linear-gradient(135deg,#EFE4D2,#E2D2B8); display:grid; place-items:center; color:var(--muted); font-size:12px; letter-spacing:.08em; text-transform:uppercase}
+  .card .body{padding:18px}
+  .card .price{font-family:var(--display); font-size:20px; font-weight:600; margin-top:8px}
+
+  /* RULES */
+  .rules{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); border-radius:12px; overflow:hidden}
+  .rules > div{padding:24px}
+  .rules .yes{background:rgba(95,107,74,.06); border-right:1px solid var(--border)}
+  .rules .no{background:rgba(156,74,50,.05)}
+  .rules h4{margin:0 0 12px; font-size:12px; letter-spacing:.12em; text-transform:uppercase}
+  .rules ul{margin:0; padding-left:18px}
+  .rules li{margin-bottom:8px}
+
+  footer{margin-top:48px; padding-top:24px; border-top:1px solid var(--border); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; color:var(--muted); font-size:13px}
+
+  @media (max-width:860px){
+    .sheet{padding:40px 20px 64px}
+    .hero{grid-template-columns:1fr; gap:32px}
+    .g2,.g3,.g4{grid-template-columns:1fr 1fr}
+    .rules{grid-template-columns:1fr}
+    .rules .yes{border-right:0; border-bottom:1px solid var(--border)}
+  }
+  @media (max-width:520px){ .g2,.g3,.g4{grid-template-columns:1fr} }
+  @media print{
+    body{background:#fff; background-image:none}
+    .sheet{max-width:none; padding:0}
+    section{break-inside:avoid}
+    .card:hover,.btn:hover{transform:none; box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Identidad · v1.0 · Noviembre 2026</p>
+      <h1>My Bakery</h1>
+      <p class="lead">Obrador artesanal en Barcelona. Pan de masa madre, bollería y pasteles horneados cada mañana desde 2020.</p>
+      <p class="tagline">Horneado cada mañana.</p>
+      <p class="small muted" style="margin-top:28px">EST 2020 · Barcelona · Pan de masa madre</p>
+    </div>
+    <div class="hero-logo">
+      <img src="assets/logo/my-bakery-logo.svg" alt="Logo My Bakery">
+    </div>
+  </section>
+
+  <!-- ESENCIA -->
+  <section>
+    <p class="eyebrow">01 · Esencia</p>
+    <h2>Tinta sobre papel</h2>
+    <p>El sistema visual nace del grabado y la imprenta: papel crema, tinta cálida y un único acento de trigo tostado. Cercano, artesanal, sin artificio.</p>
+    <div class="grid g4" style="margin-top:32px">
+      <div><h3>Oficio</h3><p class="small muted">Manos, harina, horno. Vocabulario de taller.</p></div>
+      <div><h3>Barrio</h3><p class="small muted">Barcelona, EST 2020. Cercanía real.</p></div>
+      <div><h3>Materia</h3><p class="small muted">Papel, tinta, trigo, corteza.</p></div>
+      <div><h3>Sencillez</h3><p class="small muted">Nada que sobre. Sin efectos.</p></div>
+    </div>
+  </section>
+
+  <!-- COLOR -->
+  <section>
+    <p class="eyebrow">02 · Color</p>
+    <h2>Paleta</h2>
+    <p class="lead">80 % neutros, 15 % tinta y corteza, 5 % trigo. El color nunca llena la pantalla: la acenta.</p>
+    <div class="grid g4" style="margin-top:32px">
+      <div class="swatch"><div class="chip" style="background:#14110F"></div><div class="meta"><div class="name">Ink</div><div class="hex">#14110F</div><div class="role">Texto · logo · botón</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#F7F1E6"></div><div class="meta"><div class="name">Paper</div><div class="hex">#F7F1E6</div><div class="role">Fondo base</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#FFFCF6"></div><div class="meta"><div class="name">Surface</div><div class="hex">#FFFCF6</div><div class="role">Tarjetas · inputs</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#7A4A22"></div><div class="meta"><div class="name">Crust</div><div class="hex">#7A4A22</div><div class="role">Primario · enlaces</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#C9932F"></div><div class="meta"><div class="name">Wheat</div><div class="hex">#C9932F</div><div class="role">Acento · solo decorativo</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#8A6220"></div><div class="meta"><div class="name">Wheat deep</div><div class="hex">#8A6220</div><div class="role">Texto de acento</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#9C4A32"></div><div class="meta"><div class="name">Terracotta</div><div class="hex">#9C4A32</div><div class="role">Error · agotado</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#5F6B4A"></div><div class="meta"><div class="name">Olive</div><div class="hex">#5F6B4A</div><div class="role">Éxito · disponible</div></div></div>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFÍA -->
+  <section>
+    <p class="eyebrow">03 · Tipografía</p>
+    <h2>Playfair Display + Manrope</h2>
+    <p class="lead">Una serif de imprenta para la voz; una sans geométrica para la interfaz. Dos familias, ninguna más.</p>
+    <div style="margin-top:24px">
+      <div class="spec"><div class="meta">Display XL · 64</div><div class="sample"><div class="t-xl">Pan de masa madre</div></div></div>
+      <div class="spec"><div class="meta">Display L · 48</div><div class="sample"><div class="t-l">Horneado cada mañana</div></div></div>
+      <div class="spec"><div class="meta">Display M · 36</div><div class="sample"><div class="t-m">Bollería de temporada</div></div></div>
+      <div class="spec"><div class="meta">Heading · 24</div><div class="sample"><div class="t-h">Hogaza de centeno y semillas</div></div></div>
+      <div class="spec"><div class="meta">Body · 16</div><div class="sample"><div class="t-b">Fermentación lenta de 24 horas, horneado en horno de piedra. Quedan 12 unidades.</div></div></div>
+      <div class="spec"><div class="meta">Label · 12</div><div class="sample"><div class="t-lb">Panadería · Barcelona</div></div></div>
+    </div>
+  </section>
+
+  <!-- COMPONENTES -->
+  <section>
+    <p class="eyebrow">04 · Componentes</p>
+    <h2>Piezas base</h2>
+    <div class="grid g2" style="margin-top:24px">
+      <div class="panel stack">
+        <div class="row"><button class="btn btn-primary">Añadir al pedido</button><button class="btn btn-secondary">Ver carta</button></div>
+        <button class="btn btn-ghost">Recoger en tienda</button>
+        <div class="row" style="margin-top:8px">
+          <span class="badge">Recién horneado</span>
+          <span class="badge ok">Disponible</span>
+          <span class="badge out">Agotado</span>
+        </div>
+        <div class="field" style="margin-top:8px">
+          <label for="email">Correo electrónico</label>
+          <input id="email" type="email" placeholder="hola@mybakery.example">
+        </div>
+        <div class="stepper" style="margin-top:8px"><button aria-label="Quitar">−</button><span>2</span><button aria-label="Añadir">+</button></div>
+      </div>
+      <div class="card">
+        <div class="thumb">Fotografía 4:3</div>
+        <div class="body">
+          <h3>Hogaza de masa madre</h3>
+          <p class="small muted" style="margin:6px 0 0">Centeno, trigo integral y semillas. 1 kg.</p>
+          <div class="row" style="justify-content:space-between; margin-top:12px">
+            <span class="price mono">6,50 €</span>
+            <button class="btn btn-secondary" style="height:40px; padding:0 18px; font-size:14px">Añadir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOZ -->
+  <section>
+    <p class="eyebrow">05 · Voz</p>
+    <h2>Cómo habla la marca</h2>
+    <div class="rules">
+      <div class="yes">
+        <h4 style="color:var(--olive)">Sí</h4>
+        <ul>
+          <li>“Horneado hoy. Quedan 12.”</li>
+          <li>“Masa madre de 24 horas.”</li>
+          <li>“Pide antes de las 18:00 y recógelo hoy.”</li>
+          <li>“Hecho en Barcelona desde 2020.”</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h4 style="color:var(--terracotta)">No</h4>
+        <ul>
+          <li>“¡Descubre la magia del sabor!”</li>
+          <li>“Ingredientes 100 % naturales y saludables.”</li>
+          <li>“¡No te lo pierdas!”</li>
+          <li>“Pasión por la excelencia.”</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO -->
+  <section>
+    <p class="eyebrow">06 · Logo</p>
+    <h2>Uso</h2>
+    <div class="grid g3" style="margin-top:24px">
+      <div class="panel" style="display:grid; place-items:center; min-height:180px">
+        <img src="assets/logo/my-bakery-logo.svg" alt="Logo principal" style="width:140px">
+      </div>
+      <div class="panel" style="background:var(--ink); display:grid; place-items:center; min-height:180px">
+        <div style="background:var(--paper); padding:12px; border-radius:6px"><img src="assets/logo/my-bakery-logo.svg" alt="Logo inverso" style="width:120px; display:block; filter:invert(1)"></div>
+      </div>
+      <div class="panel">
+        <h3 style="font-size:18px; margin-bottom:8px">Reglas</h3>
+        <p class="small muted" style="margin:0">Área de respeto: altura de la “M”. Mínimo 96 px digital / 28 mm impresión. Sin deformar, rotar, sombras ni recolorear.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>My Bakery · Identidad v1.0</span>
+    <span>Pendiente: vectorizar el logo a SVG</span>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+build/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Testing
+coverage/
+playwright-report/
+test-results/
+
+# Supabase local
+supabase/.branches
+supabase/.temp
+supabase/.env
+
+# Stray files
+*.rpm
+
+# OpenCode cache (generated, not committed)
+.opencode/cache/
+
+# Agent skills installed via npx skills (kept in repo, but lockfile is the source of truth)
+# Keep .agents/skills and .opencode/skills tracked.
+
+# OpenSpec generated cache
+.openspec/

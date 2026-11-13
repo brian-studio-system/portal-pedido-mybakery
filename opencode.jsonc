@@ -1,0 +1,82 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "build",
+  "skills": [
+    "./.opencode/skills",
+    "./.agents/skills"
+  ],
+  "instructions": [
+    "AGENTS.md",
+    "brand/BRAND.md",
+    "brand/DESIGN.md"
+  ],
+  "permissions": [
+    { "action": "skill", "resource": "*", "effect": "allow" },
+    { "action": "read", "resource": "*", "effect": "allow" },
+    { "action": "edit", "resource": "src/**", "effect": "allow" },
+    { "action": "edit", "resource": "brand/**", "effect": "allow" },
+    { "action": "edit", "resource": "docs/**", "effect": "allow" },
+    { "action": "edit", "resource": "openspec/**", "effect": "allow" },
+    { "action": "edit", "resource": "supabase/**", "effect": "ask" },
+    { "action": "edit", "resource": ".opencode/**", "effect": "ask" },
+    { "action": "edit", "resource": "opencode.jsonc", "effect": "ask" },
+    { "action": "shell", "resource": "pnpm *", "effect": "allow" },
+    { "action": "shell", "resource": "git *", "effect": "allow" },
+    { "action": "shell", "resource": "supabase *", "effect": "ask" },
+    { "action": "shell", "resource": "gh *", "effect": "ask" },
+    { "action": "subagent", "resource": "*", "effect": "deny" },
+    { "action": "subagent", "resource": "spec-writer", "effect": "allow" },
+    { "action": "subagent", "resource": "db-architect", "effect": "allow" },
+    { "action": "subagent", "resource": "frontend-builder", "effect": "allow" },
+    { "action": "subagent", "resource": "security-reviewer", "effect": "allow" },
+    { "action": "subagent", "resource": "code-reviewer", "effect": "allow" }
+  ],
+  "agents": {
+    "spec-writer": {
+      "description": "Convierte una idea en proposal, specs, design y tasks de OpenSpec. Solo escribe en openspec/changes.",
+      "mode": "subagent",
+      "permissions": [
+        { "action": "edit", "resource": "openspec/changes/**", "effect": "allow" },
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "shell", "resource": "*", "effect": "deny" }
+      ]
+    },
+    "db-architect": {
+      "description": "Diseña esquema Supabase, migraciones y políticas RLS. Confirma antes de aplicar.",
+      "mode": "subagent",
+      "permissions": [
+        { "action": "edit", "resource": "supabase/**", "effect": "allow" },
+        { "action": "edit", "resource": "src/lib/supabase/**", "effect": "allow" },
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "shell", "resource": "supabase *", "effect": "ask" },
+        { "action": "shell", "resource": "*", "effect": "deny" }
+      ]
+    },
+    "frontend-builder": {
+      "description": "Implementa UI con tokens de marca y componentes accesibles.",
+      "mode": "subagent",
+      "permissions": [
+        { "action": "edit", "resource": "src/**", "effect": "allow" },
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "shell", "resource": "pnpm *", "effect": "allow" },
+        { "action": "shell", "resource": "*", "effect": "deny" }
+      ]
+    },
+    "security-reviewer": {
+      "description": "Revisa amenazas, RLS, auth y manejo de secretos. Solo lectura.",
+      "mode": "subagent",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "shell", "resource": "*", "effect": "deny" }
+      ]
+    },
+    "code-reviewer": {
+      "description": "Revisa diffs por corrección, regresiones y estilo. Solo lectura.",
+      "mode": "subagent",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "shell", "resource": "*", "effect": "deny" }
+      ]
+    }
+  }
+}
