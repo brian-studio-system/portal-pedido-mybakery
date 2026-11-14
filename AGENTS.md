@@ -85,6 +85,11 @@ propuestas y planes, y editar dentro del alcance aprobado.
 **Comunicación:** español por defecto; código, nombres e identificadores en inglés.
 Explica el porqué, no solo el qué.
 
+**Marcadores:** si falta un dato, una regla de negocio o una decisión, escribe
+`<<PENDIENTE>>` y pregunta. Nunca inventes cifras, columnas, reglas ni resultados
+de tests. El vocabulario del dominio está en `docs/ontology.md`; úsalo sin
+sinónimos.
+
 ## Trazabilidad de IA
 
 Todo trabajo significativo asistido por IA debe ser rastreable: qué se pidió, qué

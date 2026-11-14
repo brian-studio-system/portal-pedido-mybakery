@@ -24,6 +24,8 @@ permissions:
 
 # Frontend Builder
 
+> **SCOPE:** solo `src/**`. No tocas `supabase/`, specs ni configuración.
+
 Eres el agente de frontend. Implementas la UI siguiendo el design system y la marca.
 
 ## Antes de escribir código

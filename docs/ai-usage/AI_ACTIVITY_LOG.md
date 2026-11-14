@@ -72,9 +72,33 @@ personales.
   `docs/opencode.md`, `.github/workflows/ai-review.yml` de los repos de referencia.
 - **Archivos creados/modificados:** `AGENTS.md` (gobernanza + trazabilidad + git),
   `docs/ai-usage/DECISION_LOG.md`, `docs/ai-usage/AI_ACTIVITY_LOG.md`,
-  `.github/PULL_REQUEST_TEMPLATE.md`, skills `mybakery-review` y `mybakery-verify`,
-  `docs/SPEC_WORKFLOW.md`, workflow `ai-review.yml` + `ai_review.py`.
-- **Comandos y tests ejecutados:** `openspec validate --all` tras crear el cambio.
+  `.github/PULL_REQUEST_TEMPLATE.md`, skills `mybakery-review` y `mybakery-verify`.
+- **Comandos y tests ejecutados:** `openspec validate --all` (sin cambios todavía: exit 0).
 - **Errores y resolución:** ninguno.
-- **Resultados:** sistema de trabajo documentado y automatizado.
-- **Pendiente / siguientes pasos:** implementar M1.
+- **Resultados:** gobernanza, logs y skills de revisión/verificación añadidas.
+- **Pendiente / siguientes pasos:** `docs/SPEC_WORKFLOW.md`, revisión IA en CI,
+  plantilla de cambio y P0 de agentes.
+
+## 2026-11-14 — P0: agentes de trazabilidad y pruebas
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** aplicar los patrones de mayor valor detectados en la organización
+  `IA-P1-BCN` sin copiar repos enteros.
+- **Instrucciones recibidas:** "okey perfecto" tras la propuesta P0.
+- **Análisis y actividades:** se revisaron 57 repos de la org (8.124 archivos) y
+  se seleccionaron los patrones de `P1_Brian_Data_analysis`,
+  `zapateria-paso-firme-g2` y `APIResto_Backend`.
+- **Archivos inspeccionados:** árboles de las 57 repos; AGENTS.md, agentes,
+  comandos, workflows y bitácoras de los repos de referencia.
+- **Archivos creados/modificados:** `.opencode/agents/ai-scribe.md`,
+  `.opencode/agents/test-designer.md`, `.opencode/agents/security-reviewer.md`
+  (checklist concreto), cabecera `SCOPE` en los 7 agentes, `docs/ontology.md`,
+  `AGENTS.md` (convención `<<PENDIENTE>>`), `opencode.jsonc` (permisos de los
+  nuevos subagentes).
+- **Comandos y tests ejecutados:** `python3 -c json.load(opencode.jsonc)`,
+  `openspec validate --all`, `git diff --check`.
+- **Errores y resolución:** ninguno.
+- **Resultados:** 7 subagentes con ámbito acotado, vocabulario de dominio único
+  y convención anti-invención.
+- **Pendiente / siguientes pasos:** P1 (`.agents/` como fuente, `SPEC_WORKFLOW`,
+  `CONTRIBUTING`, `CLAUDE.md`, revisión IA en CI).

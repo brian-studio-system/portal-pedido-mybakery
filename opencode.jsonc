@@ -29,7 +29,9 @@
     { "action": "subagent", "resource": "db-architect", "effect": "allow" },
     { "action": "subagent", "resource": "frontend-builder", "effect": "allow" },
     { "action": "subagent", "resource": "security-reviewer", "effect": "allow" },
-    { "action": "subagent", "resource": "code-reviewer", "effect": "allow" }
+    { "action": "subagent", "resource": "code-reviewer", "effect": "allow" },
+    { "action": "subagent", "resource": "ai-scribe", "effect": "allow" },
+    { "action": "subagent", "resource": "test-designer", "effect": "allow" }
   ],
   "agents": {
     "spec-writer": {
