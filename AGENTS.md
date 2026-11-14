@@ -131,13 +131,18 @@ Cada cambio = una rama = un PR. `openspec validate --strict` debe pasar en CI.
 
 ## Convenciones git
 
-- Ramas: `feat/…`, `fix/…`, `chore/…`, `docs/…`.
+- `develop` es la rama de integración y **rama por defecto** durante el desarrollo.
+- `main` es **solo release**: se toca al final, con un PR `develop → main` y tag.
+- Ramas de trabajo: `feat/…`, `fix/…`, `chore/…`, `docs/…`, siempre desde `develop`.
+- PRs van a `develop`, no a `main`.
 - Commits convencionales: `feat(cart): añadir stepper de cantidad`.
 - PR ≤ 400 líneas. Plantilla en `.github/PULL_REQUEST_TEMPLATE.md`.
-- `main` protegida: requiere CI verde y 1 aprobación.
+- CI en verde obligatorio antes de mergear.
 - **El agente no commitea, pushea, mergea ni reescribe historia sin autorización explícita.**
 - Antes de empezar: `git status` y preservar cambios no relacionados.
 - Una tarea = una rama = un PR. No mezclar alcance.
+- Hook local `pre-push` bloquea pushes a `main` salvo `ALLOW_MAIN_PUSH=1`.
+  Actívalo con `pnpm setup:hooks` (configura `core.hooksPath`).
 
 ## Cuándo parar y preguntar
 

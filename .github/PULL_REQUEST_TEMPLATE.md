@@ -2,6 +2,8 @@
 
 <!-- Qué cambia y por qué, en 2-4 líneas -->
 
+**Base:** `develop` (no `main`; `main` es solo release).
+
 ## Tipo de cambio
 
 - [ ] feat

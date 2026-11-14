@@ -15,7 +15,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "openspec:validate": "openspec validate --all"
+    "openspec:validate": "openspec validate --all",
+    "setup:hooks": "git config core.hooksPath .githooks"
   },
   "dependencies": {
     "next": "16.4.6",

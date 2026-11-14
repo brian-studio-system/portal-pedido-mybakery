@@ -1,0 +1,19 @@
+#!/bin/sh
+# Bloquea pushes directos a main. main es solo release.
+# Uso excepcional: ALLOW_MAIN_PUSH=1 git push origin main
+if [ "$ALLOW_MAIN_PUSH" = "1" ]; then
+  exit 0
+fi
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main)
+      echo "❌ Push a main bloqueado: main es solo release."
+      echo "   Trabaja en develop. Para el release final:"
+      echo "   ALLOW_MAIN_PUSH=1 git push origin main"
+      exit 1
+      ;;
+  esac
+done
+
+exit 0

@@ -25,6 +25,18 @@ cp .env.example .env.local   # rellenar variables
 pnpm dev
 ```
 
+## Ramas
+
+- `develop` — integración y rama por defecto durante el desarrollo.
+- `main` — solo release final: PR `develop → main` + tag.
+- `feat/…`, `fix/…`, `chore/…` — salen de `develop`; PR de vuelta a `develop`.
+
+Activa el hook que bloquea pushes a `main`:
+
+```bash
+pnpm setup:hooks
+```
+
 ## Comandos
 
 | Comando | Descripción |
