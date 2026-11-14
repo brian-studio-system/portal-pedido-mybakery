@@ -25,13 +25,21 @@ cp .env.example .env.local   # rellenar variables
 pnpm dev
 ```
 
-## Ramas
+## Ramas y PRs
 
-- `develop` — integración y rama por defecto durante el desarrollo.
-- `main` — solo release final: PR `develop → main` + tag.
-- `feat/…`, `fix/…`, `chore/…` — salen de `develop`; PR de vuelta a `develop`.
+Regla: **nada directo a `develop` ni a `main`.** Todo cambio entra por PR.
 
-Activa el hook que bloquea pushes a `main`:
+1. `git switch develop && git pull --ff-only`
+2. `git switch -c feat/<issue>-<slug>`
+3. Commits en la rama
+4. `git push -u origin <rama>`
+5. PR con base `develop`
+6. CI verde + revisión
+7. Merge y borrar la rama
+
+- `main` solo recibe `release/vX.Y.Z` al final del proyecto.
+- `pr-guard.yml` valida la dirección de la PR.
+- Activa los hooks que bloquean commits/pushes en ramas protegidas:
 
 ```bash
 pnpm setup:hooks

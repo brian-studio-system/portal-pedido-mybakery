@@ -140,20 +140,31 @@ Cada cambio = una rama = un PR. `openspec validate --strict` debe pasar en CI.
 - [ ] Accesible (teclado, foco, contraste)
 - [ ] Móvil verificado
 
-## Convenciones git
+## Flujo de ramas (obligatorio)
 
-- `develop` es la rama de integración y **rama por defecto** durante el desarrollo.
-- `main` es **solo release**: se toca al final, con un PR `develop → main` y tag.
-- Ramas de trabajo: `feat/…`, `fix/…`, `chore/…`, `docs/…`, siempre desde `develop`.
-- PRs van a `develop`, no a `main`.
+Regla dura: **nunca se commitea ni se pushea directo a `main` ni a `develop`.**
+Todo cambio entra por PR hacia `develop`.
+
+1. `git switch develop && git pull --ff-only`
+2. `git switch -c <tipo>/<issue>-<slug>` (ej. `feat/12-auth-magic-link`)
+3. Commits en la rama (convencionales)
+4. `git push -u origin <rama>`
+5. PR con base `develop` (nunca `main`)
+6. CI verde + revisión
+7. Merge a `develop` y borrar la rama
+
+- `main` solo recibe `release/vX.Y.Z` al final del proyecto.
+- Ramas: `feat/…`, `fix/…`, `chore/…`, `docs/…`. Una tarea = una rama = un PR.
+- Hooks `pre-commit` y `pre-push` bloquean commits/pushes en `main` y `develop`;
+  se activan con `pnpm setup:hooks`.
+- `pr-guard.yml` valida en CI que la PR vaya en la dirección correcta.
+- Excepción solo para setup/release: `ALLOW_PROTECTED_COMMIT=1` y
+  `ALLOW_PROTECTED_PUSH=1`.
 - Commits convencionales: `feat(cart): añadir stepper de cantidad`.
 - PR ≤ 400 líneas. Plantilla en `.github/PULL_REQUEST_TEMPLATE.md`.
 - CI en verde obligatorio antes de mergear.
 - **El agente no commitea, pushea, mergea ni reescribe historia sin autorización explícita.**
 - Antes de empezar: `git status` y preservar cambios no relacionados.
-- Una tarea = una rama = un PR. No mezclar alcance.
-- Hook local `pre-push` bloquea pushes a `main` salvo `ALLOW_MAIN_PUSH=1`.
-  Actívalo con `pnpm setup:hooks` (configura `core.hooksPath`).
 
 ## Cuándo parar y preguntar
 
