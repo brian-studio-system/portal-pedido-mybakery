@@ -258,3 +258,55 @@ personales.
 - **Resultados:** checks en verde; captura con 65.8 % paper, 17 % ink y 11.2 %
   surface, lo que confirma que los componentes usan la marca y no el tema neutro.
 - **Pendiente / siguientes pasos:** PR a `develop`, CI verde y merge.
+
+## 2026-11-14 — M2: spec `add-auth` y stack UX
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** cerrar la planificación de M2 y registrar el stack de UI y
+  formularios antes de implementar.
+- **Instrucciones recibidas:** Zod + RHF en M2, Sonner en M4/M5, Motion después
+  del MVP. Supabase cloud confirmado.
+- **Análisis y actividades:**
+  - Rama `feat/14-auth-magic-link` desde `develop`.
+  - `openspec new change add-auth` y artefactos `proposal`, `specs/user-auth`,
+    `design` y `tasks`.
+  - Resuelta la elección Supabase cloud (Docker no disponible y cloud es el
+    entorno de producción).
+  - Registradas D-008 (stack UI/formularios) y las tareas de M2.
+- **Archivos inspeccionados:** `openspec/project.md`, `brand/DESIGN.md`,
+  `docs/decisions.md`, `package.json`, `docs/ontology.md`.
+- **Archivos creados/modificados:** `openspec/changes/add-auth/*`,
+  `docs/decisions.md`, `docs/ai-usage/AI_ACTIVITY_LOG.md`.
+- **Comandos y tests ejecutados:** `openspec new change`, `openspec instructions`,
+  `openspec validate add-auth --strict` (válido), `openspec status` (4/4).
+- **Errores y resolución:** ninguno.
+- **Resultados:** cambio `add-auth` completo y válido, listo para revisión.
+- **Pendiente / siguientes pasos:** credenciales del proyecto Supabase cloud,
+  aplicar la migración y ejecutar las tareas 1–5.
+
+## 2026-11-14 — Supabase: MCP + CLI (setup)
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** conectar Supabase al agente por MCP y dejar el CLI listo para
+  migraciones versionadas.
+- **Instrucciones recibidas:** proyecto "My bakery portal"; crear `.env.local`
+  base para que lo rellene la persona; avanzar hasta donde sea posible.
+- **Análisis y actividades:**
+  - Instalado `supabase` 3.1.0 como devDependency y ejecutado `supabase init`.
+  - Añadido `mcp.servers.supabase` a `opencode.jsonc` (sin acotar todavía,
+    pendiente de autenticación y `project_ref`).
+  - Creado `.env.local` con placeholders (ignorado por git).
+  - Scripts `db:init`, `db:link`, `db:push`, `db:types`, `db:diff`, `db:start`
+    y `db:stop`; reglas en `AGENTS.md` y D-009.
+- **Archivos inspeccionados:** docs oficiales de Supabase (AI Tools, MCP, CLI,
+  Agent Skills), `opencode.jsonc`, `.env.example`, `package.json`.
+- **Archivos creados/modificados:** `supabase/config.toml`,
+  `supabase/.gitignore`, `.env.local` (no versionado), `opencode.jsonc`,
+  `package.json`, `pnpm-lock.yaml`, `AGENTS.md`, `docs/decisions.md`.
+- **Comandos y tests ejecutados:** `pnpm add -D supabase`, `npx supabase init`,
+  validación de JSONC, checks del proyecto.
+- **Errores y resolución:** ninguno.
+- **Resultados:** CLI y configuración listos; MCP pendiente de OAuth.
+- **Pendiente / siguientes pasos:** `opencode mcp auth supabase`,
+  `npx supabase login`, `npx supabase link --project-ref <ref>`, rellenar
+  `.env.local` y escribir la migración de `profiles`.

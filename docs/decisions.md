@@ -19,6 +19,33 @@ Registro de decisiones técnicas y de producto. Las ADR completas están en `doc
 **Decisión:** Catálogo de productos primero. El horario se prepara como tablas base (`business_hours`, `pickup_slots`) pero sin UI ni lógica de recogida.
 **Motivo:** reducir alcance del MVP.
 
+## D-009 — Supabase con MCP + CLI
+
+**Decisión:** conectar el proyecto Supabase al agente por MCP (project-scoped) y
+usar el CLI como fuente de verdad de las migraciones; las skills oficiales
+`supabase` y `supabase-postgres-best-practices` ya están instaladas.
+**Motivo:** el MCP da inspección, advisors, tipos y logs en vivo; el CLI mantiene
+migraciones versionadas y reproducibles. El plugin oficial se descarta porque
+duplicaría las skills ya instaladas.
+**Aplicación:** `mcp.servers.supabase` en `opencode.jsonc`;
+`supabase/config.toml` versionado; scripts `db:*`.
+**Seguridad:** MCP acotado al proyecto, aprobación manual de SQL, `read_only`
+para auditorías, `service_role` solo en servidor y `.env.local`.
+
+## D-008 — Stack de UI y formularios
+
+**Decisión:** Tailwind 4 + shadcn/ui (Radix) + Lucide como capa visual; Zod 4 +
+React Hook Form 7 + `@hookform/resolvers` para formularios en M2 y M5; Sonner
+para toasts en M4 y M5; Motion solo después del MVP y solo si una interacción
+concreta lo justifica.
+**Motivo:** Zod y RHF son la base de validación compartida cliente/servidor;
+Sonner resuelve feedback accesible sin montar toasts propios; Motion es el más
+pesado y el design system ya cubre el motion básico con CSS.
+**Aplicación:** dependencias en M2/M4/M5; iconos Lucide con stroke 1.5–2;
+toasts con tokens de marca, no con el tema por defecto.
+**Límites:** no instalar Motion antes del MVP; no usar un toast por cada acción;
+no mezclar sets de iconos.
+
 ## D-007 — shadcn/ui como capa de componentes
 
 **Decisión:** adoptar shadcn/ui (base Radix, CSS variables) como capa de
