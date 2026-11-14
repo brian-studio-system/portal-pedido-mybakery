@@ -73,6 +73,23 @@ Lee `brand/BRAND.md`, `brand/DESIGN.md` y `brand/tokens.json`. Usa solo los toke
 - Personaliza variantes en el propio componente (`button.tsx`), no repartiendo overrides por toda la app.
 - Prohibido dark mode y AI Elements.
 
+## Supabase
+
+- **MCP de Supabase** en `opencode.jsonc` (`mcp.servers.supabase`). Úsalo para
+  inspeccionar tablas, migraciones, advisors, logs, tipos y docs.
+- **CLI como fuente de verdad de migraciones:** `supabase/migrations/*.sql`
+  versionadas. `pnpm db:push` aplica al proyecto cloud; `pnpm db:types` genera
+  `src/types/database.ts`.
+- `supabase/config.toml` se commitea; `supabase/.temp/` no.
+- No ejecutes SQL ad-hoc que cambie el esquema: conviértelo en migración.
+- `service_role` solo en servidor y en `.env.local`. Nunca en el cliente ni en
+  el repo.
+- Después de cada migración: `get_advisors` (MCP) y revisar RLS.
+- Para auditorías o diagnóstico, usa el MCP en modo `read_only=true`.
+- Auth: magic link; rol en `profiles.role`; `is_admin()` con `security definer`.
+- Comandos: `pnpm db:link`, `pnpm db:push`, `pnpm db:types`, `pnpm db:diff`,
+  `pnpm db:start`, `pnpm db:stop`.
+
 ## Invariantes (no negociables)
 
 1. **RLS activo en todas las tablas** de Supabase.
