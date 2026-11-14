@@ -19,6 +19,16 @@ Registro de decisiones técnicas y de producto. Las ADR completas están en `doc
 **Decisión:** Catálogo de productos primero. El horario se prepara como tablas base (`business_hours`, `pickup_slots`) pero sin UI ni lógica de recogida.
 **Motivo:** reducir alcance del MVP.
 
+## D-006 — Flujo de ramas obligatorio
+
+**Decisión:** ningún commit ni push directo a `develop` o `main`. Todo cambio
+sale de `develop` en una rama `feat|fix|chore|docs/<issue>-<slug>` y entra por PR
+hacia `develop`. `main` solo recibe `release/vX.Y.Z`.
+**Motivo:** evitar integraciones sin revisión y mantener `develop` siempre verde.
+**Aplicación:** hooks `pre-commit` y `pre-push` + workflow `pr-guard.yml` + regla
+en `AGENTS.md`. Excepción explícita con `ALLOW_PROTECTED_COMMIT/PUSH=1` solo para
+setup o release.
+
 ## D-005 — Assets de design-taste-frontend podados
 
 **Decisión:** Se eliminó `assets/` (37 MB de demos) de la copia en repo de la skill. Se conserva SKILL.md, library, references y scripts.

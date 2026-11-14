@@ -1,0 +1,19 @@
+#!/bin/sh
+# Bloquea commits en ramas protegidas. Trabaja siempre en una rama de trabajo.
+# Excepción puntual: ALLOW_PROTECTED_COMMIT=1
+if [ "${ALLOW_PROTECTED_COMMIT:-0}" = "1" ]; then
+  exit 0
+fi
+
+branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo "")
+
+case "$branch" in
+  main|develop)
+    echo "❌ Commit bloqueado en '$branch'."
+    echo "   Crea una rama desde develop:"
+    echo "   git switch -c feat/<issue>-<slug>"
+    exit 1
+    ;;
+esac
+
+exit 0

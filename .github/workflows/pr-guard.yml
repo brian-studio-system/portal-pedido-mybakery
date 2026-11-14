@@ -1,0 +1,42 @@
+name: PR guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+jobs:
+  direction:
+    name: Validate base and head
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR direction
+        env:
+          BASE: ${{ github.event.pull_request.base.ref }}
+          HEAD: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -e
+          if [ "$BASE" = "main" ]; then
+            case "$HEAD" in
+              release/*)
+                echo "Release PR: $HEAD -> main"
+                ;;
+              *)
+                echo "::error::Solo release/* puede apuntar a main. Rama recibida: $HEAD"
+                exit 1
+                ;;
+            esac
+          else
+            case "$HEAD" in
+              develop|main|release/*)
+                echo "::error::PR inválida: $HEAD -> develop. Usa feat/*, fix/*, chore/* o docs/*."
+                exit 1
+                ;;
+              *)
+                echo "Feature PR: $HEAD -> develop"
+                ;;
+            esac
+          fi

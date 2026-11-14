@@ -193,3 +193,31 @@ personales.
   en :3001 para no chocar con Next en :3000.
 - **Pendiente / siguientes pasos:** revisar las 4 pantallas, generar variantes y
   continuar con M2.
+
+## 2026-11-14 — Flujo de ramas obligatorio (solo PR)
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** corregir el proceso: ningún commit ni push directo a `develop` o
+  `main`; todo entra por PR desde una rama de trabajo.
+- **Instrucciones recibidas:** aplicar hooks + `pr-guard.yml` + regla en
+  `AGENTS.md`; mergear cuando CI esté en verde.
+- **Análisis y actividades:**
+  - Se detectó que el hook anterior solo bloqueaba `main`; `develop` quedó sin
+    protección y recibió commits directos.
+  - Creada `chore/git-flow-guard` desde `develop`.
+  - Añadidos `pre-commit` (bloquea commits en `main`/`develop`) y `pre-push`
+    (bloquea pushes a ambas).
+  - Añadido `pr-guard.yml`: solo `release/*` puede apuntar a `main`; a `develop`
+    no pueden llegar `develop`, `main` ni `release/*`.
+  - Actualizados `AGENTS.md`, `README.md`, `docs/decisions.md` (D-006).
+- **Archivos inspeccionados:** `.githooks/pre-push`, `AGENTS.md`, `README.md`.
+- **Archivos creados/modificados:** `.githooks/pre-commit`, `.githooks/pre-push`,
+  `.github/workflows/pr-guard.yml`, `AGENTS.md`, `README.md`, `docs/decisions.md`.
+- **Comandos y tests ejecutados:** `git switch -c chore/git-flow-guard`,
+  `pnpm setup:hooks`, `git push -u origin chore/git-flow-guard`,
+  `gh pr create --base develop`, CI pendiente.
+- **Errores y resolución:** el commit y push de este cambio se hacen en la rama,
+  no en `develop`; así se prueba el flujo real.
+- **Resultados:** flujo PR-only documentado y aplicado.
+- **Pendiente / siguientes pasos:** mergear la PR con CI verde y empezar M2 en
+  `feat/<issue>-auth-magic-link`.
