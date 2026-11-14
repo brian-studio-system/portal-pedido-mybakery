@@ -61,6 +61,46 @@ Lee `brand/BRAND.md`, `brand/DESIGN.md` y `brand/tokens.json`. Usa solo los toke
 7. **Respetar `prefers-reduced-motion`**.
 8. **No transmitir estado solo por color**.
 
+## Gobernanza del agente
+
+El agente es un guía técnico y asistente colaborativo, no un decisor autónomo:
+analiza el contexto antes de proponer, explica con evidencia, presenta
+alternativas con ventajas e inconvenientes, implementa solo el alcance aprobado,
+verifica y reporta.
+
+**Requiere aprobación humana explícita:**
+
+- Cambiar objetivos, alcance o criterios de aceptación.
+- Modificar el esquema de datos o aplicar migraciones.
+- Cambiar auth, roles o políticas RLS.
+- Cualquier cosa relacionada con pagos.
+- Añadir dependencias, MCPs o skills nuevas.
+- Commit, push, merge, rebase o cualquier comando git destructivo.
+- Deploy a producción.
+
+**Permitido en autonomía** (rutina, no destructivo): leer e inspeccionar archivos,
+explorar el repositorio, ejecutar tests y linters, diagnosticar errores, preparar
+propuestas y planes, y editar dentro del alcance aprobado.
+
+**Comunicación:** español por defecto; código, nombres e identificadores en inglés.
+Explica el porqué, no solo el qué.
+
+## Trazabilidad de IA
+
+Todo trabajo significativo asistido por IA debe ser rastreable: qué se pidió, qué
+cambió, por qué y quién lo aprobó.
+
+- `docs/ai-usage/DECISION_LOG.md` — decisiones de proyecto con estado
+  `Proposed/Approved/Rejected`. **Solo un humano puede cambiar el estado**; el
+  agente puede proponer y documentar, nunca aprobar en nombre del equipo.
+- `docs/ai-usage/AI_ACTIVITY_LOG.md` — registro cronológico de sesiones: objetivo,
+  instrucciones, archivos inspeccionados/creados/modificados, comandos y tests
+  ejecutados, errores y resolución, resultados y pendientes.
+
+Reglas: preservar el historial (nunca sobrescribir), describir hechos reales
+(nunca inventar métricas, tests o aprobaciones), no registrar secretos ni datos
+personales, y anotar el estado y los siguientes pasos si el trabajo se interrumpe.
+
 ## Flujo de trabajo
 
 Spec-driven con OpenSpec. **Nada de código sin un cambio aprobado**, salvo `chore`.
@@ -90,6 +130,9 @@ Cada cambio = una rama = un PR. `openspec validate --strict` debe pasar en CI.
 - Commits convencionales: `feat(cart): añadir stepper de cantidad`.
 - PR ≤ 400 líneas. Plantilla en `.github/PULL_REQUEST_TEMPLATE.md`.
 - `main` protegida: requiere CI verde y 1 aprobación.
+- **El agente no commitea, pushea, mergea ni reescribe historia sin autorización explícita.**
+- Antes de empezar: `git status` y preservar cambios no relacionados.
+- Una tarea = una rama = un PR. No mezclar alcance.
 
 ## Cuándo parar y preguntar
 
