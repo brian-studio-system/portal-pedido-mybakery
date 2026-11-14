@@ -102,3 +102,35 @@ personales.
   y convención anti-invención.
 - **Pendiente / siguientes pasos:** P1 (`.agents/` como fuente, `SPEC_WORKFLOW`,
   `CONTRIBUTING`, `CLAUDE.md`, revisión IA en CI).
+
+## 2026-11-14 — Backlog M0–M6 y M1 Scaffold
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** crear el backlog completo con historias y sub-issues por hito, y
+  andamiar Next.js 16 con Tailwind 4, tokens de marca y layout base.
+- **Instrucciones recibidas:** crear las 68 issues, M0 cerrada como historial y
+  autorizar el push.
+- **Análisis y actividades:**
+  - Se recrearon los hitos con el orden definitivo (M1 Scaffold, M2 Auth, …).
+  - Se añadieron labels `story`, `task`, `prioridad:P1/P2/P3`, `bloqueado`.
+  - Se crearon 67 issues (14 historias + 53 tareas) con sub-issues y Project.
+  - Se implementó el scaffold: Next 16.4.6, React 19.3.1, Tailwind 4.3.5,
+    tokens como CSS vars, `next/font`, Header/Footer/Container, home, carta y
+    cuenta placeholder, `formatPrice` + tests.
+- **Archivos inspeccionados:** `AGENTS.md`, `brand/tokens.json`, `brand/DESIGN.md`.
+- **Archivos creados/modificados:** `package.json`, `pnpm-lock.yaml`,
+  `tsconfig.json`, `next.config.ts`, `postcss.config.mjs`, `eslint.config.mjs`,
+  `vitest.config.mts`, `src/app/*`, `src/components/layout/*`, `src/lib/money*`,
+  `public/my-bakery-logo.svg`, `src/app/icon.svg`,
+  `scripts/backlog/*`, `.github/workflows/ci.yml`, `.gitignore`.
+- **Comandos y tests ejecutados:** `pnpm install`, `pnpm lint`, `pnpm typecheck`,
+  `pnpm test` (3 tests), `pnpm build`, `openspec validate --all --strict`,
+  `gh issue create`, `gh project item-add`, capturas con Firefox headless.
+- **Errores y resolución:** faltaba la label `type:test` y el primer seeder
+  abortó; se hizo idempotente. El límite de GraphQL se agotó al añadir items al
+  Project; las 12 últimas issues se crearon y enlazaron por REST y quedan
+  pendientes de sincronizar en el Project.
+- **Resultados:** app arranca, build en verde y capturas con la paleta correcta
+  (paper/ink). 67 issues creadas.
+- **Pendiente / siguientes pasos:** añadir las 12 issues restantes al Project,
+  push, verificar CI en remoto y empezar M2 (Auth).

@@ -40,5 +40,8 @@ jobs:
       - name: Unit tests
         run: pnpm test
 
+      - name: Build
+        run: pnpm build
+
       - name: OpenSpec validate
-        run: npx --yes @fission-ai/openspec@latest validate --strict
+        run: npx --yes @fission-ai/openspec@latest validate --all --strict
