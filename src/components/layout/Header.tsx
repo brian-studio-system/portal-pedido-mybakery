@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+
 import { Container } from "./Container";
 
 export function Header() {
@@ -33,12 +35,9 @@ export function Header() {
           >
             Cuenta
           </Link>
-          <Link
-            href="/carta"
-            className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-transform hover:-translate-y-0.5"
-          >
-            Pedir
-          </Link>
+          <Button asChild size="sm">
+            <Link href="/carta">Pedir</Link>
+          </Button>
         </nav>
       </Container>
     </header>

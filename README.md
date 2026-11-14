@@ -61,6 +61,9 @@ pnpm setup:hooks
 | `pnpm design:dtcg` | Exportar tokens a DTCG |
 | `pnpm stitch:serve` | Preview de pantallas Stitch en :3001 |
 | `pnpm stitch:open` | Abrir el proyecto en Stitch |
+| `pnpm ui:add <componente>` | Añadir un componente de shadcn/ui |
+| `pnpm ui:info` | Configuración y componentes instalados |
+| `pnpm ui:docs <componente>` | Documentación de un componente |
 
 ## Trabajo con IA
 

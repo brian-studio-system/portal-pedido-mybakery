@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* La marca es solo light: dark queda desactivado salvo que exista .dark. */
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-ink: #14110f;
@@ -10,14 +15,100 @@
   --color-terracotta: #9c4a32;
   --color-olive: #5f6b4a;
   --color-muted: #6b6259;
+  --color-border-soft: rgba(20, 17, 15, 0.14);
 
   --font-display: var(--font-playfair), Georgia, serif;
   --font-body: var(--font-manrope), system-ui, sans-serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
 
   --radius-sm: 4px;
   --radius-md: 12px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 
   --shadow-soft: 0 8px 24px rgba(20, 17, 15, 0.08);
+}
+
+/* Puente entre los tokens semánticos de shadcn y la marca. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-4xl: 28px;
+}
+
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-paper);
+  --secondary: var(--color-crust);
+  --secondary-foreground: var(--color-paper);
+  --muted: #efe7da;
+  --muted-foreground: var(--color-muted);
+  --accent: var(--color-wheat);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-terracotta);
+  --border: rgba(20, 17, 15, 0.14);
+  --input: rgba(20, 17, 15, 0.18);
+  --ring: var(--color-crust);
+  --chart-1: var(--color-crust);
+  --chart-2: var(--color-wheat);
+  --chart-3: var(--color-olive);
+  --chart-4: var(--color-terracotta);
+  --chart-5: var(--color-muted);
+  --radius: 12px;
+  --sidebar: var(--color-surface);
+  --sidebar-foreground: var(--color-ink);
+  --sidebar-primary: var(--color-ink);
+  --sidebar-primary-foreground: var(--color-paper);
+  --sidebar-accent: var(--color-wheat);
+  --sidebar-accent-foreground: var(--color-ink);
+  --sidebar-border: rgba(20, 17, 15, 0.14);
+  --sidebar-ring: var(--color-crust);
 }
 
 @layer base {
@@ -31,6 +122,10 @@
     color: var(--color-ink);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
   }
 
   ::selection {

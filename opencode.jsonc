@@ -10,6 +10,15 @@
     "brand/BRAND.md",
     "brand/DESIGN.md"
   ],
+  "mcp": {
+    "servers": {
+      "shadcn": {
+        "type": "local",
+        "command": ["npx", "shadcn@latest", "mcp"],
+        "enabled": true
+      }
+    }
+  },
   "permissions": [
     { "action": "skill", "resource": "*", "effect": "allow" },
     { "action": "read", "resource": "*", "effect": "allow" },

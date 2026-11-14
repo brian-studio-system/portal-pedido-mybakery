@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Container } from "@/components/layout/Container";
+import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
   return (
@@ -18,18 +19,12 @@ export default function HomePage() {
             2020.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/carta"
-              className="rounded-full bg-ink px-6 py-3 font-semibold text-paper transition-transform hover:-translate-y-0.5"
-            >
-              Ver la carta
-            </Link>
-            <Link
-              href="/cuenta"
-              className="rounded-full border border-ink px-6 py-3 font-semibold text-ink transition-colors hover:bg-surface"
-            >
-              Mi cuenta
-            </Link>
+            <Button asChild>
+              <Link href="/carta">Ver la carta</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/cuenta">Mi cuenta</Link>
+            </Button>
           </div>
           <p className="mt-8 text-sm text-muted">
             Recogida en tienda · Pago al recoger
