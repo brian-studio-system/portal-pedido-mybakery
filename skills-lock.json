@@ -31,6 +31,12 @@
       "skillPath": "skills/security-and-hardening/SKILL.md",
       "computedHash": "4970681073e6138c4cec8eca31546187f47723a61a7f1204710ae86d9f704517"
     },
+    "shadcn": {
+      "source": "shadcn-ui/ui",
+      "sourceType": "github",
+      "skillPath": "skills/shadcn/SKILL.md",
+      "computedHash": "388962d16c7a4f13aaeee0d8f128e50a87df8553d42ef7988c39c0e1c74a40e8"
+    },
     "supabase": {
       "source": "supabase/agent-skills",
       "sourceType": "github",

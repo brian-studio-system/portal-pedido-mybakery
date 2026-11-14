@@ -221,3 +221,40 @@ personales.
 - **Resultados:** flujo PR-only documentado y aplicado.
 - **Pendiente / siguientes pasos:** mergear la PR con CI verde y empezar M2 en
   `feat/<issue>-auth-magic-link`.
+
+## 2026-11-14 — shadcn/ui (Radix) + skill + MCP
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** adoptar shadcn/ui como capa de componentes sin perder la marca.
+- **Instrucciones recibidas:** base Radix, instalar skill y MCP, personalizar
+  `button`/`card`/`input`, crear issue para la rama.
+- **Análisis y actividades:**
+  - Issue #70 y rama `chore/70-shadcn-setup`.
+  - `shadcn init` 4.23.0 con base Radix y preset Nova (el CLI no acepta
+    "custom" de forma no interactiva).
+  - Reconciliado `globals.css`: tokens semánticos de shadcn mapeados a la marca,
+    Geist eliminado y layout devuelto a Playfair Display + Manrope.
+  - `Button`, `Card` e `Input` personalizados a marca (48 px, pill, 12 px, sin
+    sombras). Home y Header usan `Button`.
+  - Skill oficial instalada en `.agents/skills/shadcn/`; MCP integrado en
+    `opencode.jsonc` bajo `mcp.servers.shadcn`; `opencode.json` duplicado eliminado.
+  - Scripts `ui:add`, `ui:info`, `ui:docs`, `ui:search`; reglas en `AGENTS.md`,
+    D-007 en `docs/decisions.md` y comandos en README.
+- **Archivos inspeccionados:** `src/app/globals.css`, `src/app/layout.tsx`,
+  `src/components/layout/*`, `package.json`, `opencode.jsonc`.
+- **Archivos creados/modificados:** `components.json`, `src/components/ui/*`,
+  `src/lib/utils.ts`, `src/app/globals.css`, `src/app/layout.tsx`,
+  `src/app/page.tsx`, `src/components/layout/Header.tsx`, `.agents/skills/shadcn/**`,
+  `opencode.jsonc`, `package.json`, `pnpm-lock.yaml`, `skills-lock.json`,
+  `AGENTS.md`, `README.md`, `docs/decisions.md`.
+- **Comandos y tests ejecutados:** `pnpm dlx shadcn@latest init/add`,
+  `pnpm dlx shadcn@latest mcp init`, `npx skills add`, `pnpm ui:info`,
+  `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm design:lint`,
+  captura con Firefox headless.
+- **Errores y resolución:** el init pidió preset (se usó Nova); creó
+  `opencode.json` en vez de tocar el `.jsonc` (se integró y se borró); añadió
+  Geist (se eliminó); la primera captura salió blanca por un servidor viejo en
+  `:3000` (se mató y se repitió).
+- **Resultados:** checks en verde; captura con 65.8 % paper, 17 % ink y 11.2 %
+  surface, lo que confirma que los componentes usan la marca y no el tema neutro.
+- **Pendiente / siguientes pasos:** PR a `develop`, CI verde y merge.

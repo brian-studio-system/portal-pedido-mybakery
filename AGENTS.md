@@ -61,6 +61,18 @@ Lee `brand/BRAND.md`, `brand/DESIGN.md` y `brand/tokens.json`. Usa solo los toke
 - Los prototipos de `design/stitch/` son referencia visual, no código fuente.
 - No se implementa UI nueva sin pantalla aprobada o spec; siempre con tokens.
 
+## UI con shadcn
+
+- Los primitivos viven en `src/components/ui/`; los componentes de producto, en `src/components/`.
+- Usa los tokens semánticos de shadcn (`bg-background`, `text-foreground`, `bg-card`, `border-border`, `ring-ring`, `rounded-md`). Nunca colores hex sueltos.
+- El tema ya está mapeado a la marca en `src/app/globals.css`. **No ejecutes `shadcn init` otra vez** ni cambies el `style`/`base` de `components.json`.
+- Antes de añadir un componente: `pnpm ui:docs <componente>` o `pnpm ui:search`. Después: `pnpm ui:add <componente>`.
+- Añade solo los componentes que uses. No instales los 50+.
+- Formularios: `Field`/`FieldGroup` + React Hook Form + Zod.
+- Carrito móvil: `Sheet`. Tablas de admin: `Table`.
+- Personaliza variantes en el propio componente (`button.tsx`), no repartiendo overrides por toda la app.
+- Prohibido dark mode y AI Elements.
+
 ## Invariantes (no negociables)
 
 1. **RLS activo en todas las tablas** de Supabase.

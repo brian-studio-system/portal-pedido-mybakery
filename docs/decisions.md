@@ -19,6 +19,18 @@ Registro de decisiones técnicas y de producto. Las ADR completas están en `doc
 **Decisión:** Catálogo de productos primero. El horario se prepara como tablas base (`business_hours`, `pickup_slots`) pero sin UI ni lógica de recogida.
 **Motivo:** reducir alcance del MVP.
 
+## D-007 — shadcn/ui como capa de componentes
+
+**Decisión:** adoptar shadcn/ui (base Radix, CSS variables) como capa de
+componentes, con los tokens semánticos mapeados a la marca. No se usa el tema
+neutro por defecto.
+**Motivo:** componentes accesibles con código abierto, editables y compatibles
+con Tailwind 4, sin atarse a una librería cerrada.
+**Aplicación:** `components.json` + `src/components/ui/` + mapeo en
+`src/app/globals.css`; skill oficial y MCP de shadcn; CLI vía `pnpm ui:*`.
+**Límites:** sin dark mode, sin AI Elements, sin instalar todos los componentes.
+No se vuelve a ejecutar `shadcn init`.
+
 ## D-006 — Flujo de ramas obligatorio
 
 **Decisión:** ningún commit ni push directo a `develop` o `main`. Todo cambio
