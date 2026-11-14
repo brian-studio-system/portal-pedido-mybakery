@@ -16,6 +16,12 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "openspec:validate": "openspec validate --all",
+    "design:lint": "design.md lint brand/DESIGN.md",
+    "design:tailwind": "design.md export --format tailwind brand/DESIGN.md",
+    "design:dtcg": "design.md export --format dtcg brand/DESIGN.md",
+    "stitch:serve": "stitch serve --port 3001",
+    "stitch:open": "stitch open project",
+    "stitch:url": "stitch url project",
     "setup:hooks": "git config core.hooksPath .githooks"
   },
   "dependencies": {
@@ -24,6 +30,7 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "@google/design.md": "0.4.0",
     "@tailwindcss/postcss": "^4.3.5",
     "@types/node": "^24",
     "@types/react": "^19.3.0",

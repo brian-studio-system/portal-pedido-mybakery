@@ -48,6 +48,11 @@ pnpm setup:hooks
 | `pnpm test` | Vitest (unit) |
 | `pnpm test:e2e` | Playwright |
 | `pnpm openspec:validate` | Validar specs de OpenSpec |
+| `pnpm design:lint` | Validar `brand/DESIGN.md` con el linter oficial |
+| `pnpm design:tailwind` | Exportar tokens a Tailwind |
+| `pnpm design:dtcg` | Exportar tokens a DTCG |
+| `pnpm stitch:serve` | Preview de pantallas Stitch en :3001 |
+| `pnpm stitch:open` | Abrir el proyecto en Stitch |
 
 ## Trabajo con IA
 

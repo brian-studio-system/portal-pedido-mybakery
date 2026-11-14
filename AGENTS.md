@@ -50,6 +50,17 @@ brand/                       # identidad y design system
 
 Lee `brand/BRAND.md`, `brand/DESIGN.md` y `brand/tokens.json`. Usa solo los tokens definidos. Prohibido: colores, fuentes o radios fuera de la paleta. La skill `mybakery-brand` carga estas reglas automáticamente.
 
+## Diseño con Stitch
+
+- Skill `/stitch` instalada en `.agents/skills/stitch/`.
+- Proyecto fijado en `.stitch.json`; no pasar `--project` en cada comando.
+- `pnpm stitch:serve` → preview de pantallas en `http://127.0.0.1:3001`.
+- `pnpm stitch:open` → abre el canvas en el navegador.
+- `pnpm design:lint` → valida `brand/DESIGN.md`; se exige 0 errores y 0 warnings.
+- `pnpm design:tailwind` y `pnpm design:dtcg` → exportan tokens.
+- Los prototipos de `design/stitch/` son referencia visual, no código fuente.
+- No se implementa UI nueva sin pantalla aprobada o spec; siempre con tokens.
+
 ## Invariantes (no negociables)
 
 1. **RLS activo en todas las tablas** de Supabase.

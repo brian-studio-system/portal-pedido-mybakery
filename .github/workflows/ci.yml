@@ -35,6 +35,9 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: Design system lint
+        run: pnpm design:lint
+
       - name: Unit tests
         run: pnpm test
 

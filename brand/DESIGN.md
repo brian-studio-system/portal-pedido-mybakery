@@ -1,3 +1,178 @@
+---
+version: alpha
+name: My Bakery
+description: Artisan bakery in Barcelona. Ink on paper, engraved, warm and restrained.
+colors:
+  primary: "#14110F"
+  secondary: "#7A4A22"
+  tertiary: "#C9932F"
+  ink: "#14110F"
+  paper: "#F7F1E6"
+  surface: "#FFFCF6"
+  crust: "#7A4A22"
+  wheat: "#C9932F"
+  wheat-deep: "#8A6220"
+  wheat-soft: "#F7EFE0"
+  terracotta: "#9C4A32"
+  terracotta-soft: "#F6E9E4"
+  olive: "#5F6B4A"
+  olive-soft: "#EEF0E8"
+  muted: "#6B6259"
+  border: "#E3DCD1"
+typography:
+  display-xl:
+    fontFamily: Playfair Display
+    fontSize: 64px
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: -0.02em
+  display-l:
+    fontFamily: Playfair Display
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.1
+  display-m:
+    fontFamily: Playfair Display
+    fontSize: 36px
+    fontWeight: 600
+    lineHeight: 1.15
+  heading:
+    fontFamily: Playfair Display
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.3
+  body-l:
+    fontFamily: Manrope
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.6
+  body:
+    fontFamily: Manrope
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.6
+  small:
+    fontFamily: Manrope
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+  label:
+    fontFamily: Manrope
+    fontSize: 12px
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: 0.08em
+rounded:
+  sm: 4px
+  md: 12px
+  full: 999px
+spacing:
+  xs: 4px
+  sm: 8px
+  md: 12px
+  lg: 16px
+  xl: 24px
+  2xl: 32px
+  3xl: 48px
+  4xl: 64px
+  5xl: 96px
+components:
+  page:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body}"
+    padding: "{spacing.5xl}"
+  hero:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.display-xl}"
+    padding: "{spacing.3xl}"
+  section-title:
+    textColor: "{colors.ink}"
+    typography: "{typography.display-m}"
+    padding: "{spacing.2xl}"
+  card:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.lg}"
+  card-title:
+    textColor: "{colors.ink}"
+    typography: "{typography.heading}"
+  lead:
+    textColor: "{colors.muted}"
+    typography: "{typography.body-l}"
+  caption:
+    textColor: "{colors.muted}"
+    typography: "{typography.small}"
+  label:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.wheat-deep}"
+    typography: "{typography.label}"
+    padding: "{spacing.xs}"
+  eyebrow:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.secondary}"
+    typography: "{typography.label}"
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.paper}"
+    typography: "{typography.body}"
+    rounded: "{rounded.full}"
+    padding: "{spacing.md}"
+  button-secondary:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body}"
+    rounded: "{rounded.full}"
+    padding: "{spacing.sm}"
+  link:
+    textColor: "{colors.crust}"
+    typography: "{typography.body}"
+  divider:
+    backgroundColor: "{colors.border}"
+    padding: "{spacing.xs}"
+  badge-default:
+    backgroundColor: "{colors.wheat-soft}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.full}"
+    padding: "{spacing.xs}"
+  badge-accent:
+    backgroundColor: "{colors.wheat}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.full}"
+  badge-promo:
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.full}"
+  badge-available:
+    backgroundColor: "{colors.olive-soft}"
+    textColor: "{colors.olive}"
+    rounded: "{rounded.full}"
+  badge-soldout:
+    backgroundColor: "{colors.terracotta-soft}"
+    textColor: "{colors.terracotta}"
+    rounded: "{rounded.full}"
+  price:
+    textColor: "{colors.ink}"
+    typography: "{typography.display-l}"
+  input:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sm}"
+    padding: "{spacing.md}"
+  footer:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    padding: "{spacing.4xl}"
+  admin-panel:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.xl}"
+---
+
 # My Bakery — Design System
 
 **Brand:** My Bakery · artisan bakery · Barcelona · est. 2020

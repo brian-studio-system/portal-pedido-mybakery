@@ -163,3 +163,33 @@ personales.
   paleta correcta (paper #F7F1E6, surface #FFFCF6, ink #14110F).
 - **Pendiente / siguientes pasos:** revisión visual en Stitch, iterar o generar
   variantes, sincronizar 12 issues al Project y empezar M2.
+
+## 2026-11-14 — CLI de Stitch, skill `/stitch` y lint de DESIGN.md
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** adoptar el CLI oficial de Stitch y validar `DESIGN.md` con el
+  linter de Google.
+- **Instrucciones recibidas:** instalar CLI global + scripts, login cuando toque,
+  versionar `.stitch.json` y la skill, lint en CI; workspaces después.
+- **Análisis y actividades:**
+  - Instalado `@google/stitch` 0.12.2 global y `@google/design.md` 0.4.0 como
+    devDependency.
+  - `stitch config set project 5766437364405215573` → `.stitch.json`.
+  - `stitch agent-skills add` → `.agents/skills/stitch/` (18 archivos).
+  - Añadido el front matter YAML a `brand/DESIGN.md` (16 colores, 8 escalas
+    tipográficas, 3 radios, 9 espaciados, 22 componentes).
+  - `npx @google/design.md lint` → 0 errores, 0 warnings.
+  - Scripts `design:lint`, `design:tailwind`, `design:dtcg`, `stitch:serve`,
+    `stitch:open`, `stitch:url`; `design:lint` añadido a CI.
+- **Archivos inspeccionados:** `brand/DESIGN.md`, `docs` de Stitch CLI/Design.md.
+- **Archivos creados/modificados:** `.stitch.json`, `.agents/skills/stitch/**`,
+  `brand/DESIGN.md`, `package.json`, `pnpm-lock.yaml`, `AGENTS.md`, `README.md`,
+  `design/stitch/README.md`, `.github/workflows/ci.yml`.
+- **Comandos y tests ejecutados:** `stitch status`, `stitch config set project`,
+  `stitch agent-skills add`, `pnpm design:lint`, `pnpm design:dtcg`,
+  `pnpm design:tailwind`, `stitch url project`, `stitch serve --dry-run`.
+- **Errores y resolución:** ninguno.
+- **Resultados:** DESIGN.md validado, proyecto fijado y CLI listo. Preview local
+  en :3001 para no chocar con Next en :3000.
+- **Pendiente / siguientes pasos:** revisar las 4 pantallas, generar variantes y
+  continuar con M2.
