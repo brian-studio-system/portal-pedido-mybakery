@@ -134,3 +134,32 @@ personales.
   (paper/ink). 67 issues creadas.
 - **Pendiente / siguientes pasos:** añadir las 12 issues restantes al Project,
   push, verificar CI en remoto y empezar M2 (Auth).
+
+## 2026-11-14 — Rama develop y prototipos Stitch (4 pantallas)
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** separar `main` (solo release) de `develop` (integración) y crear
+  los prototipos de las 4 pantallas críticas en Google Stitch.
+- **Instrucciones recibidas:** empezar por las 4 críticas, prompts en inglés con
+  copy en español, solo screenshots, `main` bloqueada.
+- **Análisis y actividades:**
+  - `develop` creada desde `main`, publicada y configurada como rama por defecto.
+  - Protección de rama no disponible en el plan free para repo privado; se creó
+    un hook local `pre-push` que bloquea pushes a `main`.
+  - CI actualizada a `develop` y `main`; verde en ambas.
+  - Proyecto Stitch `My Bakery - Portal de pedidos` con `DESIGN.md` subido y
+    design system `7a2f2b9366f4460a9d535235a0e61a8d`.
+  - Generadas 4 pantallas: Home, Carta, Producto y Carrito.
+  - Screenshots descargados vía `download_file` y guardados en `design/stitch/`.
+- **Archivos inspeccionados:** `brand/DESIGN.md`, `brand/tokens.json`.
+- **Archivos creados/modificados:** `.githooks/pre-push`, `.github/workflows/ci.yml`,
+  `AGENTS.md`, `README.md`, `package.json`, `design/stitch/*`.
+- **Comandos y tests ejecutados:** `gh api PATCH default_branch`, `gh run list`
+  (CI success en develop y main), `pnpm setup:hooks`, llamadas MCP de Stitch.
+- **Errores y resolución:** protección de rama 403 (plan free) → hook local.
+  `create_project` rechaza `deviceType`/`projectType` (solo acepta título).
+  La `downloadUrl` de Stitch devuelve 401 → descarga por MCP y guardado local.
+- **Resultados:** 4 screenshots (780×3712, 780×2848, 780×2160, 780×2146) con la
+  paleta correcta (paper #F7F1E6, surface #FFFCF6, ink #14110F).
+- **Pendiente / siguientes pasos:** revisión visual en Stitch, iterar o generar
+  variantes, sincronizar 12 issues al Project y empezar M2.

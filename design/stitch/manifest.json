@@ -1,0 +1,26 @@
+{
+  "projectId": "5766437364405215573",
+  "designSystem": "assets/7a2f2b9366f4460a9d535235a0e61a8d",
+  "screens": [
+    {
+      "file": "01-home.png",
+      "screenId": "2e520c5c15a84cd6b7ca96a0fbd27e42",
+      "title": "Home"
+    },
+    {
+      "file": "02-carta.png",
+      "screenId": "2075d07daad44d4785d442bf4a5d7a66",
+      "title": "Carta"
+    },
+    {
+      "file": "03-producto.png",
+      "screenId": "988ba19d9b1f49f09e9fcff31f50f91a",
+      "title": "Producto"
+    },
+    {
+      "file": "04-carrito.png",
+      "screenId": "2219ca5a7c8043b8952103a1a5a229c7",
+      "title": "Carrito"
+    }
+  ]
+}
