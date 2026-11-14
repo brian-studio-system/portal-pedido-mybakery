@@ -258,3 +258,28 @@ personales.
 - **Resultados:** checks en verde; captura con 65.8 % paper, 17 % ink y 11.2 %
   surface, lo que confirma que los componentes usan la marca y no el tema neutro.
 - **Pendiente / siguientes pasos:** PR a `develop`, CI verde y merge.
+
+## 2026-11-14 — M2: spec `add-auth` y stack UX
+
+- **Agente/modelo:** DeepSeek V4.1 Flash (OpenCode).
+- **Objetivo:** cerrar la planificación de M2 y registrar el stack de UI y
+  formularios antes de implementar.
+- **Instrucciones recibidas:** Zod + RHF en M2, Sonner en M4/M5, Motion después
+  del MVP. Supabase cloud confirmado.
+- **Análisis y actividades:**
+  - Rama `feat/14-auth-magic-link` desde `develop`.
+  - `openspec new change add-auth` y artefactos `proposal`, `specs/user-auth`,
+    `design` y `tasks`.
+  - Resuelta la elección Supabase cloud (Docker no disponible y cloud es el
+    entorno de producción).
+  - Registradas D-008 (stack UI/formularios) y las tareas de M2.
+- **Archivos inspeccionados:** `openspec/project.md`, `brand/DESIGN.md`,
+  `docs/decisions.md`, `package.json`, `docs/ontology.md`.
+- **Archivos creados/modificados:** `openspec/changes/add-auth/*`,
+  `docs/decisions.md`, `docs/ai-usage/AI_ACTIVITY_LOG.md`.
+- **Comandos y tests ejecutados:** `openspec new change`, `openspec instructions`,
+  `openspec validate add-auth --strict` (válido), `openspec status` (4/4).
+- **Errores y resolución:** ninguno.
+- **Resultados:** cambio `add-auth` completo y válido, listo para revisión.
+- **Pendiente / siguientes pasos:** credenciales del proyecto Supabase cloud,
+  aplicar la migración y ejecutar las tareas 1–5.

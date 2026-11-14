@@ -19,6 +19,20 @@ Registro de decisiones técnicas y de producto. Las ADR completas están en `doc
 **Decisión:** Catálogo de productos primero. El horario se prepara como tablas base (`business_hours`, `pickup_slots`) pero sin UI ni lógica de recogida.
 **Motivo:** reducir alcance del MVP.
 
+## D-008 — Stack de UI y formularios
+
+**Decisión:** Tailwind 4 + shadcn/ui (Radix) + Lucide como capa visual; Zod 4 +
+React Hook Form 7 + `@hookform/resolvers` para formularios en M2 y M5; Sonner
+para toasts en M4 y M5; Motion solo después del MVP y solo si una interacción
+concreta lo justifica.
+**Motivo:** Zod y RHF son la base de validación compartida cliente/servidor;
+Sonner resuelve feedback accesible sin montar toasts propios; Motion es el más
+pesado y el design system ya cubre el motion básico con CSS.
+**Aplicación:** dependencias en M2/M4/M5; iconos Lucide con stroke 1.5–2;
+toasts con tokens de marca, no con el tema por defecto.
+**Límites:** no instalar Motion antes del MVP; no usar un toast por cada acción;
+no mezclar sets de iconos.
+
 ## D-007 — shadcn/ui como capa de componentes
 
 **Decisión:** adoptar shadcn/ui (base Radix, CSS variables) como capa de
